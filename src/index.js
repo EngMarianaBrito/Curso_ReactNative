@@ -1,38 +1,44 @@
-const { request, response } = require("express")
 const express = require ("express")//importou
 const app = express()//atribui a função a variavel
-
+const { uuid } = require ( "uuidv4" )
 
 //query params(listar,filtrar as minhas informações)
 //route params (identificador recursos -> atualizar e deletar)
 //request body
 
-app.get("/projeto", (request, response) => {
-    return response.json([
-        "Projeto 1", 
-        "Projeto 2" 
-    ])
+app.use(express.json())
+
+const projetos = []
+
+app.get('/projeto', (request, response) => {()
+
+    return response.json(projetos)
 })
 
-app.post("/projeto", (request, response) => {
-    const body = request.body
-    console.log(params)
+app.post('/projeto:id', (request, response) => {
+    const {title, dev} =request.body
+    const projeto = {id: uuid(), title, dev}
 
-    return response.json([
-        "Projeto 1", 
-        "Projeto 2",
-        "Projeto 3"
-    ])
+    projetos.push(projeto)
+
+    return response.json(projeto)
 })
 
-app.put("/projeto/:id", (request, response) => {
-    const params  = request.params
-    console.log(params)
+app.put('/projeto:id', (request, response) => {
+    const {id} = request.params
+    const projectIndex = projetos.findIndex(project => project.id == id)
     
     return response.json([
         "Projeto 4", 
         "Projeto 2",
         "Projeto 3"
+    ])
+})
+
+app.delete('/projeto/:id', (request, response) => {
+    return response.json([
+        "projeto 2",
+        "projeto 3"
     ])
 })
 
