@@ -1,8 +1,16 @@
+import React from 'react'
+import Header from './Components/Header'
+
 
 function App() {
   return (
-    <h1>Hello Word</h1>
-  );
+    <div>
+      <Header/>
+      <Header/>
+      <Header/>
+      <Header/>
+    </div>
+   );
 }
 
 export default App;
