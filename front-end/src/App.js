@@ -1,9 +1,22 @@
 import React from 'react'
+import Header from './Components/Header'
 
-export default function Header(props) {
+function App() {
   return (
-      <header>
-        <h1>props.title</h1>
-      </header>
+    <div>
+      <Header title = "React">
+        <ul>
+          <li>Componetização</li>
+          <li>Propriedades</li>
+        </ul>
+      </Header><Header title="React">
+        <ul>
+          <li>Componetização</li>
+          <li>Propriedades</li>
+        </ul>
+      </Header>
+    </div>
    )
 }
+
+export default App;
