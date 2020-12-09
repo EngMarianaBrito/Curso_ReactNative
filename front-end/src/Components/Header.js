@@ -7,5 +7,5 @@ export default function Header ({title, children}) {
 
         {children}
       </header>
-   )
+    )
 }
