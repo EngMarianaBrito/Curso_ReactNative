@@ -17,12 +17,11 @@ function App() {
     //setProjects([...projects, `Projeto criado em: ${Date.now()}`])
     const response =  await api.post('projeto', {
       title: `Projeto estático: ${Date.now()}`,
-      dev: "Lia"
+      dev: "Lia Mariana"
     })
 
     const  projeto = response.data
     setProjects([...projects, projeto ])
-
   }
 
   return(
