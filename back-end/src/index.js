@@ -1,13 +1,14 @@
-const express = require ("express") 
-//importou
-const app = express()
-//atribui a função a variavel
+const express = require ("express") //importou
+const cors = require("cors")//importou 
+const app = express()//atribui a função a variavel
 const { uuid } = require ( "uuidv4" )
 
 //query params(listar,filtrar as minhas informações)
 //route params (identificador recursos -> atualizar e deletar)
-//request body
+//cors pede a conexão com o back-end
+//axios faz a conexão 
 
+app.use(cors())//proteger os dados 
 app.use(express.json())
 
 const projetos = []
@@ -16,8 +17,8 @@ app.get('/projeto', (request, response) => {
     const {title} = request.query
 
     const resultados = title 
-    ? projetos.filter(projeto => projeto.title.includes(title))
-    : projetos
+        ? projetos.filter(projeto => projeto.title.includes(title))
+        : projetos
 
     return response.json(resultados)
 })

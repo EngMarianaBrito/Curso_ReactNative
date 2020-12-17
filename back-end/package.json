@@ -22,6 +22,8 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
     "uuidv4": "^6.2.5"
   }
 }

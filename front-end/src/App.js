@@ -1,9 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import Header from './Components/Header'
+import api from './services/api'
 
 function App() {
 
-  const [projects, setProjects] = useState(["Engenheira de Software","Designer","Dançarina"])
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    api.get('projeto').then(response => {
+      setProjects(response.data)
+    })
+  }, [] )
 
   function handleAddProjects(){
 
@@ -16,11 +23,11 @@ function App() {
   return(
 
     <div>
-      <Header title = "Lia Mariana">
+      <Header title = "React">
         <ul>
           {projects.map(project => (
-            <li key = {project}>
-              {project}
+            <li key = {project.id}>
+              {project.title}
             </li>
           ))}
         </ul>
@@ -35,3 +42,4 @@ function App() {
 }
 
 export default App;
+
